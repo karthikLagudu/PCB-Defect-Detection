@@ -1,3 +1,6 @@
+Please checkout  "https://huggingface.co/spaces/lkarthik/pcb-defect-detection" 
+
+
 PRINTED CIRCUIT BOARD DEFECT DETECTION BASED ON IMAGE PROCESSING
 
 Printed circuit boards (PCBs) are an almost universal component of every electronic

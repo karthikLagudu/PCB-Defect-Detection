@@ -1,6 +1,7 @@
 <div align="center">
 
-# PCB Vision
+# PCB Defect Detection 
+https://huggingface.co/spaces/lkarthik/pcb-vision
 
 ### Deep-learning PCB defect detection with YOLOv5
 

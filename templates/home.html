@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="zxx">
+<html lang="en">
 
 <head>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Title -->
-	<title>Home</title>
+	<title>PCB Vision | Intelligent defect detection</title>
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;500;600;700;800;900&display=swap"
 		rel="stylesheet">
@@ -32,9 +32,12 @@
 	<link rel="stylesheet" href="static/assets/css/style.css">
 	<!-- Responsive CSS -->
 	<link rel="stylesheet" href="static/assets/css/responsive.css">
+	<link rel="stylesheet" href="static/assets/css/modern-ui.css">
+	<script src="static/assets/js/modern-ui.js"></script>
 </head>
 
-<body>
+<body class="ui-page">
+	<a class="ui-skip-link" href="#main-content">Skip to main content</a>
 
 	<!-- Start Preloader Section -->
 	<div class="preloader">
@@ -65,9 +68,9 @@
 			<div class="container">
 				<div class="macro-responsive-menu">
 					<div class="logo">
-						<a href="#">
-							<img src="static/assets/img/pcb.png" class="white-logo" alt="logo">
-							<img src="static/assets/img/pcb.png" class="black-logo" alt="logo">
+						<a href="/" aria-label="PCB Vision home">
+							<img src="static/assets/img/pcb.png" class="white-logo" alt="PCB Vision">
+							<img src="static/assets/img/pcb.png" class="black-logo" alt="PCB Vision">
 						</a>
 					</div>
 				</div>
@@ -76,20 +79,20 @@
 		<div class="macro-nav">
 			<div class="container">
 				<nav class="navbar navbar-expand-md navbar-light">
-					<a class="navbar-brand" href="#">
-						<img src="static/assets/img/pcb.png" class="white-logo" alt="logo">
-						<img src="static/assets/img/pcb.png" class="black-logo" alt="logo">
+					<a class="navbar-brand" href="/" aria-label="PCB Vision home">
+						<img src="static/assets/img/pcb.png" class="white-logo" alt="PCB Vision">
+						<img src="static/assets/img/pcb.png" class="black-logo" alt="PCB Vision">
 					</a>
 					<div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
 						<ul class="navbar-nav">
 
 							<li class="nav-item">
-								<a href="/" class="nav-link">Home</a>
+								<a href="/" class="nav-link active" aria-current="page">Home</a>
 							</li>
 
 						</ul>
 						<div class="other-option">
-							<a class="default-btn" href="/logon">Signup <span></span></a>
+							<a class="default-btn" href="/index">Open inspector <span></span></a>
 						</div>
 					</div>
 				</nav>
@@ -99,18 +102,21 @@
 	<!-- End Navbar Section -->
 
 	<!-- Start Home Section -->
+	<main id="main-content">
 	<div class="home-area">
 		<div class="d-table">
 			<div class="d-table-cell">
 				<div class="container">
 					<div class="row align-items-center">
 						<div class="col-lg-8 offset-lg-2 col-md-12">
-							<div class="main-banner-content">
-								<h3>Welcome to Dashboard</h3>
-
-								<p>Printed Circuit Board Defect Detection Methods Based on Image Processing, Machine
-									Learning and Deep Learning: A Survey</p>
-
+							<div class="main-banner-content ui-reveal">
+								<h3>Computer vision inspection</h3>
+								<h1>See PCB defects before they become failures.</h1>
+								<p>Analyze printed circuit board imagery with a focused detection workflow powered by image processing and deep learning.</p>
+								<div class="ui-hero-actions">
+									<a class="ui-button" href="/index">Open inspector</a>
+									<a class="ui-button ui-button--secondary" href="#about-detection">Explore the approach</a>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -120,33 +126,45 @@
 	</div>
 	<!-- End Home Section -->
 
-
 	<!-- Start About Section -->
-	<section class="about-area section-padding">
+	<section id="about-detection" class="about-area section-padding">
 		<div class="container">
 			<div class="row d-flex align-items-center">
 				<div class="col-lg-6 col-md-12 col-sm-12">
-					<div class="about-content about-content-2">
-						<h6 class="sub-title">About</h6>
-						<h2>Defect Detection</h2>
-						<p>Printed circuit boards (PCBs) are a nearly ubiquitous component of every kind of electronic
-							device. With the rapid development of integrated circuit and semiconductor technology, the
-							size of a PCB can shrink down to a very tiny dimension. Therefore, high-precision and rapid
-							defect detection in PCBs needs to be achieved. </p>
-						<p> The methodology of how to prepare this overview of the PCB defect detection methods is
-							firstly introduced. Secondly, manual defect detection methods are reviewed briefly. </p>
-						<p>PCBs are used in almost every kind of electronic equipment, from electronic watches, smart
-							phones to computers, communication electronic devices and military weapon systems, as long
-							as integrated circuits and other electronic components are present. Benefitting from the
-							development of integrated circuit and semiconductor technology, the size of electronic
-							device components has shrunk down to a tiny scale</p>
+					<div class="about-content about-content-2 ui-reveal">
+						<h6 class="sub-title">How it works</h6>
+						<h2>From board image to annotated result</h2>
+						<p>The application wraps a trained YOLOv5 object detector in a simple Flask workflow. It reads the uploaded image, runs model inference, draws the predicted regions, and returns the rendered inspection image.</p>
 
+						<ol class="ui-process-list" aria-label="Detection process">
+							<li>
+								<span class="ui-process-list__number">01</span>
+								<span><strong>Prepare the input</strong><small>Choose a focused JPG, JPEG, or PNG board image up to 10 MB.</small></span>
+							</li>
+							<li>
+								<span class="ui-process-list__number">02</span>
+								<span><strong>Run YOLOv5 inference</strong><small>The model evaluates the image at size 415 using 0.50 confidence and 0.45 IoU thresholds.</small></span>
+							</li>
+							<li>
+								<span class="ui-process-list__number">03</span>
+								<span><strong>Review the result</strong><small>Detected regions are rendered on the image and returned as an annotated JPEG.</small></span>
+							</li>
+						</ol>
+
+						<div class="ui-defect-tags" aria-label="Configured defect classes">
+							<span>Missing hole</span><span>Mouse bite</span><span>Open circuit</span>
+							<span>Short</span><span>Spur</span><span>Spurious copper</span>
+						</div>
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-12 col-sm-12">
-					<div class="about-image about-image-2">
+					<div class="about-image about-image-2 ui-reveal" data-reveal="soft" data-reveal-delay="80">
 						<img src="static/assets/img/01_missing_hole_19_jpg.rf.8ca47fb0c7b10e2b61bb8841019d2d75.jpg"
-							alt="image">
+							alt="PCB inspection sample showing a missing-hole defect">
+						<div class="ui-image-note">
+							<span class="ui-image-note__dot" aria-hidden="true"></span>
+							<span><strong>Inspection sample</strong><small>Missing-hole defect image</small></span>
+						</div>
 						<div class="waves-box">
 
 							<div class="iq-waves">
@@ -161,6 +179,7 @@
 		</div>
 	</section>
 	<!-- End About Section -->
+	</main>
 	<!-- Start Footer Section -->
 	<section class="footer-area">
 		<div class="container">

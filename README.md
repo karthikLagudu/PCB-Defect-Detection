@@ -1,4 +1,32 @@
-Please checkout  "https://huggingface.co/spaces/lkarthik/pcb-defect-detection" 
+# PCB Defect Detection
+
+A Flask and YOLOv5 application for detecting six printed circuit board defect classes: missing hole, mouse bite, open circuit, short, spur, and spurious copper.
+
+## Run with Docker
+
+The repository includes the trained `best.pt` weights through Git LFS and exposes the application on port `7860`.
+
+```bash
+git lfs pull
+docker build -t pcb-defect-detection .
+docker run --rm -p 7860:7860 pcb-defect-detection
+```
+
+Then open `http://localhost:7860`.
+
+## Run locally
+
+Use Python 3.9, install the CPU builds of PyTorch and torchvision, then install `requirements_deploy.txt` and start `app.py`.
+
+```bash
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+pip install -r requirements_deploy.txt
+python app.py
+```
+
+The interface accepts JPG, JPEG, and PNG board images up to 10 MB. The model runs inference at size 415 with a confidence threshold of 0.50 and an IoU threshold of 0.45.
+
+## Project overview
 
 
 PRINTED CIRCUIT BOARD DEFECT DETECTION BASED ON IMAGE PROCESSING

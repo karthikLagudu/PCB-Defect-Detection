@@ -1,313 +1,69 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Signup</title>
-	<!-- Mobile Specific Metas -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<!-- Font-->
-	
-	<style>
-
-			@import url('https://fonts.googleapis.com/css?family=Poppins');
-
-			/* BASIC */
-
-			html {
-			background-color: #56baed;
-			}
-
-			body {
-			font-family: "Poppins", sans-serif;
-			height: 100vh;
-			}
-
-			a {
-			color: #92badd;
-			display:inline-block;
-			text-decoration: none;
-			font-weight: 400;
-			}
-
-			h2 {
-			text-align: center;
-			font-size: 16px;
-			font-weight: 600;
-			text-transform: uppercase;
-			display:inline-block;
-			margin: 40px 8px 10px 8px; 
-			color: #cccccc;
-			}
-
-
-
-			/* STRUCTURE */
-
-			.wrapper {
-			display: flex;
-			align-items: center;
-			flex-direction: column; 
-			justify-content: center;
-			width: 100%;
-			min-height: 100%;
-			padding: 20px;
-			}
-
-			#formContent {
-			-webkit-border-radius: 10px 10px 10px 10px;
-			border-radius: 10px 10px 10px 10px;
-			background: #fff;
-			padding: 30px;
-			width: 90%;
-			max-width: 450px;
-			position: relative;
-			padding: 0px;
-			-webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-			box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-			text-align: center;
-			}
-
-			#formFooter {
-			background-color: #f6f6f6;
-			border-top: 1px solid #dce8f1;
-			padding: 25px;
-			text-align: center;
-			-webkit-border-radius: 0 0 10px 10px;
-			border-radius: 0 0 10px 10px;
-			}
-
-
-
-			/* TABS */
-
-			h2.inactive {
-			color: #cccccc;
-			}
-
-			h2.active {
-			color: #0d0d0d;
-			border-bottom: 2px solid #5fbae9;
-			}
-
-
-
-			/* FORM TYPOGRAPHY*/
-
-			input[type=button], input[type=submit], input[type=reset]  {
-			background-color: #56baed;
-			border: none;
-			color: white;
-			padding: 15px 80px;
-			text-align: center;
-			text-decoration: none;
-			display: inline-block;
-			text-transform: uppercase;
-			font-size: 13px;
-			-webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-			box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-			-webkit-border-radius: 5px 5px 5px 5px;
-			border-radius: 5px 5px 5px 5px;
-			margin: 5px 20px 40px 20px;
-			-webkit-transition: all 0.3s ease-in-out;
-			-moz-transition: all 0.3s ease-in-out;
-			-ms-transition: all 0.3s ease-in-out;
-			-o-transition: all 0.3s ease-in-out;
-			transition: all 0.3s ease-in-out;
-			}
-
-			input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-			background-color: #39ace7;
-			}
-
-			input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
-			-moz-transform: scale(0.95);
-			-webkit-transform: scale(0.95);
-			-o-transform: scale(0.95);
-			-ms-transform: scale(0.95);
-			transform: scale(0.95);
-			}
-
-			input[type=text] {
-			background-color: #f6f6f6;
-			border: none;
-			color: #0d0d0d;
-			padding: 15px 32px;
-			text-align: center;
-			text-decoration: none;
-			display: inline-block;
-			font-size: 16px;
-			margin: 5px;
-			width: 85%;
-			border: 2px solid #f6f6f6;
-			-webkit-transition: all 0.5s ease-in-out;
-			-moz-transition: all 0.5s ease-in-out;
-			-ms-transition: all 0.5s ease-in-out;
-			-o-transition: all 0.5s ease-in-out;
-			transition: all 0.5s ease-in-out;
-			-webkit-border-radius: 5px 5px 5px 5px;
-			border-radius: 5px 5px 5px 5px;
-			}
-
-			input[type=text]:focus {
-			background-color: #fff;
-			border-bottom: 2px solid #5fbae9;
-			}
-
-			input[type=text]:placeholder {
-			color: #cccccc;
-			}
-
-
-
-			/* ANIMATIONS */
-
-			/* Simple CSS3 Fade-in-down Animation */
-			.fadeInDown {
-			-webkit-animation-name: fadeInDown;
-			animation-name: fadeInDown;
-			-webkit-animation-duration: 1s;
-			animation-duration: 1s;
-			-webkit-animation-fill-mode: both;
-			animation-fill-mode: both;
-			}
-
-			@-webkit-keyframes fadeInDown {
-			0% {
-				opacity: 0;
-				-webkit-transform: translate3d(0, -100%, 0);
-				transform: translate3d(0, -100%, 0);
-			}
-			100% {
-				opacity: 1;
-				-webkit-transform: none;
-				transform: none;
-			}
-			}
-
-			@keyframes fadeInDown {
-			0% {
-				opacity: 0;
-				-webkit-transform: translate3d(0, -100%, 0);
-				transform: translate3d(0, -100%, 0);
-			}
-			100% {
-				opacity: 1;
-				-webkit-transform: none;
-				transform: none;
-			}
-			}
-
-			/* Simple CSS3 Fade-in Animation */
-			@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-			@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-			@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-
-			.fadeIn {
-			opacity:0;
-			-webkit-animation:fadeIn ease-in 1;
-			-moz-animation:fadeIn ease-in 1;
-			animation:fadeIn ease-in 1;
-
-			-webkit-animation-fill-mode:forwards;
-			-moz-animation-fill-mode:forwards;
-			animation-fill-mode:forwards;
-
-			-webkit-animation-duration:1s;
-			-moz-animation-duration:1s;
-			animation-duration:1s;
-			}
-
-			.fadeIn.first {
-			-webkit-animation-delay: 0.4s;
-			-moz-animation-delay: 0.4s;
-			animation-delay: 0.4s;
-			}
-
-			.fadeIn.second {
-			-webkit-animation-delay: 0.6s;
-			-moz-animation-delay: 0.6s;
-			animation-delay: 0.6s;
-			}
-
-			.fadeIn.third {
-			-webkit-animation-delay: 0.8s;
-			-moz-animation-delay: 0.8s;
-			animation-delay: 0.8s;
-			}
-
-			.fadeIn.fourth {
-			-webkit-animation-delay: 1s;
-			-moz-animation-delay: 1s;
-			animation-delay: 1s;
-			}
-
-			/* Simple CSS3 Fade-in Animation */
-			.underlineHover:after {
-			display: block;
-			left: 0;
-			bottom: -10px;
-			width: 0;
-			height: 2px;
-			background-color: #56baed;
-			content: "";
-			transition: width 0.2s;
-			}
-
-			.underlineHover:hover {
-			color: #0d0d0d;
-			}
-
-			.underlineHover:hover:after{
-			width: 100%;
-			}
-
-
-
-			/* OTHERS */
-
-			*:focus {
-				outline: none;
-			} 
-
-			#icon {
-			width:60%;
-			}
-
-			* {
-			box-sizing: border-box;
-			}
-
-	</style>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Create a PCB Vision account.">
+	<title>Create account | PCB Vision</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="static/assets/css/fontawesome.min.css">
+	<link rel="stylesheet" href="static/assets/css/modern-ui.css">
+	<script src="static/assets/js/modern-ui.js"></script>
 </head>
-<body>
-	<div class="wrapper fadeInDown">
-		<div id="formContent">
-		  <!-- Tabs Titles -->
-		  <h2 class="active"> Sign UP </h2>
+<body class="ui-auth-page">
+	<a class="ui-skip-link" href="#auth-form">Skip to account form</a>
+	<main class="ui-auth-shell ui-reveal" data-reveal="soft">
+		<aside class="ui-auth-aside" aria-label="PCB Vision introduction">
+			<a class="ui-auth-brand" href="/" aria-label="PCB Vision home">
+				<span class="ui-auth-brand__mark" aria-hidden="true"><i class="fas fa-microchip"></i></span>
+				<span>PCB Vision</span>
+			</a>
+			<div class="ui-auth-aside__content">
+				<h1>A sharper view of every board.</h1>
+				<p>Create your account to access the image inspection workflow and supporting model analysis.</p>
+			</div>
+			<span class="ui-auth-aside__meta">Fast setup · Focused workflow</span>
+		</aside>
 
-		  <!-- Login Form -->
-		  <form action="/signup" method="GET">
-			<input type="text" id="login" class="fadeIn second" name="user" placeholder="User" required pattern="[A-Za-z].{6,}" title="Six or more Uppercase and lowercase letter req.">
-			<input type="text" class="fadeIn third" name="name" placeholder="Name" required=""  />
-			<input type="text" class="fadeIn fourth" name="email" placeholder="Email" required="" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$">
-			<input type="text" class="fadeIn first" name="mobile" placeholder="Mobile" required=""  pattern="[6-9]{1}[0-9]{9}" title="Phone number with 7-9 and remaing 9 digit with 0-9">
-			<input type="text" id="password" class="fadeIn third" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters">
-			<input type="submit" class="fadeIn fourth" value="Log In">
-		  </form>
+		<section class="ui-auth-main">
+			<form id="auth-form" class="ui-auth-form" action="/signup" method="GET">
+				<header class="ui-auth-form__header">
+					<h2>Create your account</h2>
+					<p>Set up your inspection workspace in a moment.</p>
+				</header>
 
-<!-- Remind Passowrd -->
-<div id="formFooter">
-	
-	<br><br>
-	<a >Have an Account!</a>
-	<a  class="underlineHover" href="/login"> Login </a>
-  </div>
-  <div>
-		
-		
-	</div>
-</div>
-</div>
+				<div class="ui-field">
+					<label for="login">Username</label>
+					<input type="text" id="login" name="user" placeholder="Choose a username" autocomplete="username" required pattern="[A-Za-z].{6,}" title="Use at least seven characters and begin with a letter.">
+				</div>
+
+				<div class="ui-field">
+					<label for="name">Full name</label>
+					<input type="text" id="name" name="name" placeholder="Enter your full name" autocomplete="name" required>
+				</div>
+
+				<div class="ui-field">
+					<label for="email">Email address</label>
+					<input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$">
+				</div>
+
+				<div class="ui-field">
+					<label for="mobile">Mobile number</label>
+					<input type="tel" id="mobile" name="mobile" placeholder="10-digit mobile number" autocomplete="tel" inputmode="numeric" required pattern="[6-9]{1}[0-9]{9}" title="Enter a valid 10-digit mobile number.">
+				</div>
+
+				<div class="ui-field">
+					<label for="password">Password</label>
+					<input type="password" id="password" name="password" placeholder="Create a secure password" autocomplete="new-password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Use at least eight characters with an uppercase letter, lowercase letter, and number.">
+					<small class="ui-form-help">At least 8 characters with uppercase, lowercase, and a number.</small>
+				</div>
+
+				<button class="ui-button ui-button--block" type="submit">Create account</button>
+				<p class="ui-auth-switch">Already have an account? <a href="/login">Sign in</a></p>
+			</form>
+		</section>
+	</main>
 </body>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

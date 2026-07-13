@@ -5,6 +5,7 @@ venv/
 # Model weights
 *.pt
 *.pth
+!best.pt
 
 # Large zip files
 *.zip

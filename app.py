@@ -49,6 +49,9 @@ def gen():
     output of the model as a video stream
     """
     cap=cv2.VideoCapture(0)
+    if not cap.isOpened():
+        print("Webcam could not be opened (expected in headless cloud environments).")
+        return
     while(cap.isOpened()):
         success, frame = cap.read()
         if success == True:
@@ -111,11 +114,11 @@ def home():
 
 @app.route('/logon')
 def logon():
-	return render_template('signup.html')
+	return redirect('/index')
 
 @app.route('/login')
 def login():
-	return render_template('signin.html')
+	return redirect('/index')
 
 
 @app.route("/signup")
@@ -129,24 +132,28 @@ def signup():
     otp = random.randint(1000, 5000)
     print(f"Sending OTP {otp} to {email}")
     
-    try:
-        msg = EmailMessage()
-        msg.set_content("Your PCB Project Signup OTP is: " + str(otp))
-        msg['Subject'] = 'OTP - PCB Defect Detection'
-        msg['From'] = "322506402188@andhrauniversity.edu.in"
-        msg['To'] = email
-        
-        s = smtplib.SMTP('smtp.gmail.com', 587)
-        s.starttls()
-        # Using provided 16-digit app password
-        s.login("lkarthik2004@gmail.com", "XXXX XXXX XXXX XXXX")
-        s.send_message(msg)
-        s.quit()
-        print("Email sent successfully!")
-    except Exception as e:
-        print(f"Failed to send email: {e}")
-        # Falling back to console print for user convenience
-        print(f"DEVELOPER NOTIFICATION: Use OTP {otp} if email fails.")
+    def send_email_func(email_addr, code):
+        import smtplib
+        from email.message import EmailMessage
+        try:
+            msg = EmailMessage()
+            msg.set_content("Your PCB Project Signup OTP is: " + str(code))
+            msg['Subject'] = 'OTP - PCB Defect Detection'
+            msg['From'] = "322506402188@andhrauniversity.edu.in"
+            msg['To'] = email_addr
+            
+            s = smtplib.SMTP('smtp.gmail.com', 587, timeout=3)
+            s.starttls()
+            s.login("lkarthik2004@gmail.com", "XXXX XXXX XXXX XXXX")
+            s.send_message(msg)
+            s.quit()
+            print("Email sent successfully!")
+        except Exception as err:
+            print(f"Failed to send email: {err}")
+            print(f"DEVELOPER NOTIFICATION: Use OTP {code} if email fails.")
+
+    import threading
+    threading.Thread(target=send_email_func, args=(email, otp), daemon=True).start()
     return render_template("val.html")
 
 @app.route('/predict1', methods=['POST'])
@@ -192,4 +199,5 @@ def notebook():
     return render_template("Notebook.html")
 
 if __name__ == "__main__":
-    app.run(port=5000)  
+    port = int(os.environ.get("PORT", 7860))
+    app.run(host="0.0.0.0", port=port)

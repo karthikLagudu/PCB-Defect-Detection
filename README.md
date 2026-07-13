@@ -1,8 +1,10 @@
 <div align="center">
 
 # PCB Defect Detection 
-https://huggingface.co/spaces/lkarthik/pcb-vision
 
+https://obligations-barnes-listed-reading.trycloudflare.com/
+
+https://huggingface.co/spaces/lkarthik/pcb-vision
 ### Deep-learning PCB defect detection with YOLOv5
 
 Upload a printed circuit board image, run a trained object detector, and receive an annotated inspection result through a focused Flask interface.
